@@ -464,6 +464,31 @@
   .cumle { font-size: 12px; }
   .no { font-size: 13px; }
 }
+
+/* Telefon yatay konumda: biraz daha fazla içerik ekrana sığsın; dikey görünüm değişmesin. */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  body {
+    padding: 6px 5px;
+    gap: 10px;
+  }
+  .sayfa {
+    padding: 10px 10px 12px;
+    margin-bottom: 10px;
+  }
+  .sayfa.kapak { padding: 0; }
+  .ust { font-size: 8px; margin-bottom: 7px; gap: 5px; }
+  h1.okul { font-size: 22px; margin: 16px 0 14px; }
+  h2.proje { font-size: 17px; margin-bottom: 8px; }
+  h3.baslik { font-size: 13px; }
+  .alt { font-size: 8px; margin-bottom: 6px; }
+  .kart { padding: 5px; }
+  .no { font-size: 11px; margin-bottom: 4px; }
+  .cumle { font-size: 10px; line-height: 1.25; margin-bottom: 6px; }
+  .sozcuk { font-size: 17px; }
+  .fotoizgara { gap: 7px; }
+  .fkutu figcaption { font-size: 9px; }
+}
+
 </style>
 </head>
 <body>
