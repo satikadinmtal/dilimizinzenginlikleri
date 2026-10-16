@@ -314,18 +314,18 @@
     }
   
 
-    /* Ekran düzeni: masaüstünde A4 sayfalar yan yana, telefonda tek sütun. */
+    /* Ekran düzeni: webde A4 sayfalar alt alta; mobil düzeni aşağıda korunur. */
     html { min-height:100%; }
     body {
-      display:grid;
-      grid-template-columns:repeat(2, 210mm);
-      align-items:start;
-      justify-content:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
       gap:22px;
-      width:max-content;
-      min-width:100%;
+      width:100%;
+      min-width:0;
       padding:24px;
-      overflow-x:auto;
+      overflow-x:hidden;
     }
     .sayfa {
       width:210mm;
