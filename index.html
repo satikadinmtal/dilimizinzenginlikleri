@@ -314,84 +314,68 @@
     }
   
 
-    /* Masaüstü: A4 sayfalar yan yana. Mobil: her A4 sayfa tek sütunda ve ekrana sığar. */
-    html {
-      min-height:100%;
-      touch-action:pan-x pan-y pinch-zoom;
-      -webkit-text-size-adjust:100%;
-    }
+    /* Ekran düzeni: masaüstünde A4 sayfalar yan yana, telefonda tek sütun. */
+    html { min-height:100%; }
     body {
       display:grid;
       grid-template-columns:repeat(2, 210mm);
-      grid-auto-flow:row;
       align-items:start;
-      justify-content:start;
+      justify-content:center;
       gap:22px;
       width:max-content;
       min-width:100%;
       padding:24px;
       overflow-x:auto;
-      overflow-y:visible;
-      touch-action:pan-x pan-y pinch-zoom;
     }
     .sayfa {
-      box-sizing:border-box;
       width:210mm;
-      min-width:210mm;
       max-width:none;
-      min-height:297mm;
-      height:auto;
+      min-width:0;
       margin:0;
-      padding:12mm 14mm 16mm;
-      overflow-wrap:normal;
-      box-shadow:0 4px 18px rgba(0,0,0,.28);
     }
-    .sayfa.kapak {
-      padding:0;
-      overflow:hidden;
-    }
-    .izgara { grid-template-columns:1fr 1fr; }
-    .fotoizgara { grid-template-columns:1fr 1fr; }
-    .kapak img, img { max-width:100%; }
+    img { max-width:100%; }
 
-    @media screen and (max-width:700px) {
-      /* Tek sayfa genişliği telefona uyarlanır; A4 içindeki iki sütun korunur. */
+    @media screen and (max-width:900px) {
       body {
-        display:grid;
-        grid-template-columns:minmax(0, 1fr);
-        grid-auto-flow:row;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
         width:100%;
         min-width:0;
-        padding:10px 8px;
+        padding:12px 8px;
         gap:14px;
         overflow-x:hidden;
-        overflow-y:visible;
-        justify-content:stretch;
       }
       .sayfa {
         width:100%;
-        min-width:0;
         max-width:100%;
         min-height:0;
+        padding:24px 18px;
         margin:0;
-        padding:5mm 5mm 7mm;
         overflow-wrap:anywhere;
+        box-shadow:0 3px 12px rgba(0,0,0,.2);
       }
       .sayfa.kapak { padding:0; }
-      .izgara { grid-template-columns:1fr 1fr; }
-      .kart { min-height:0; padding:8px 7px; }
-      .cumle { min-height:0; font-size:12px; }
-      .fotoizgara { grid-template-columns:1fr 1fr; }
+      .ust { flex-wrap:wrap; }
+      h1.okul { font-size:clamp(23px,6vw,32px); line-height:1.2; margin:30px 0; }
+      h2.proje { font-size:clamp(19px,5vw,24px); }
+      .izgara { grid-template-columns:minmax(0,1fr); }
+      .kart { min-height:0; }
+      .cumle { min-height:0; }
+      .fotoizgara { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
       .fkutu figcaption span { min-width:35%; }
-      h1.okul { font-size:clamp(20px, 5.5vw, 28px); }
-      h2.proje { font-size:clamp(16px, 4.5vw, 22px); }
-      h3.baslik { font-size:clamp(13px, 3.8vw, 17px); }
-      .sozcuk { font-size:clamp(17px, 5vw, 23px); overflow-wrap:anywhere; }
-      .ust { flex-wrap:wrap; font-size:9px; }
       .kapak img { width:100%; height:auto; }
     }
+    @media screen and (max-width:420px) {
+      body { padding:8px 5px; gap:10px; }
+      .sayfa { padding:18px 12px; }
+      .sayfa.kapak { padding:0; }
+      .kart { padding:10px; }
+      .fotoizgara { grid-template-columns:minmax(0,1fr); }
+      .sozcuk { font-size:clamp(20px,6vw,26px); overflow-wrap:anywhere; }
+    }
     @media print {
-      html, body {
+      body {
         display:block;
         width:auto;
         min-width:0;
@@ -400,7 +384,6 @@
       }
       .sayfa {
         width:210mm;
-        min-width:0;
         max-width:none;
         min-height:297mm;
         margin:0;
@@ -409,86 +392,6 @@
         break-after:page;
       }
     }
-
-
-/* Telefon: A4 sayfalar tek tek, alt alta; yakınlaştırma serbest */
-@media screen and (max-width: 700px) {
-  html, body {
-    width: 100%;
-    min-width: 0;
-    overflow-x: hidden;
-    touch-action: pan-x pan-y pinch-zoom;
-  }
-  body {
-    padding: 12px 8px;
-  }
-  .sayfa {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    min-height: 0;
-    height: auto;
-    margin: 0 auto 18px;
-    padding: 18px 14px;
-    box-sizing: border-box;
-  }
-  /* Sayfanın içindeki kartların masaüstü iki sütun düzenini koru. */
-  .izgara {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .fotoizgara {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .kart {
-    min-width: 0;
-    padding: 8px;
-    margin: 0;
-  }
-  .cumle, .sozcuk, .es b, .fkutu figcaption {
-    overflow-wrap: anywhere;
-  }
-  h1.okul {
-    font-size: clamp(22px, 6vw, 30px);
-    line-height: 1.2;
-    margin: 30px 0 26px;
-  }
-  h2.proje { font-size: clamp(18px, 5vw, 24px); }
-  .ust { flex-wrap: wrap; }
-  .kapak { padding: 0; }
-  .kapak img { display: block; width: 100%; height: auto; }
-  .fkutu .kutu { aspect-ratio: 4 / 3; }
-}
-@media screen and (max-width: 380px) {
-  .sayfa:not(.kapak) { padding: 13px 9px; }
-  .kart { padding: 6px; }
-  .cumle { font-size: 12px; }
-  .no { font-size: 13px; }
-}
-
-/* Telefon yatay konumda: biraz daha fazla içerik ekrana sığsın; dikey görünüm değişmesin. */
-@media screen and (max-width: 900px) and (orientation: landscape) {
-  body {
-    padding: 6px 5px;
-    gap: 10px;
-  }
-  .sayfa {
-    padding: 10px 10px 12px;
-    margin-bottom: 10px;
-  }
-  .sayfa.kapak { padding: 0; }
-  .ust { font-size: 8px; margin-bottom: 7px; gap: 5px; }
-  h1.okul { font-size: 22px; margin: 16px 0 14px; }
-  h2.proje { font-size: 17px; margin-bottom: 8px; }
-  h3.baslik { font-size: 13px; }
-  .alt { font-size: 8px; margin-bottom: 6px; }
-  .kart { padding: 5px; }
-  .no { font-size: 11px; margin-bottom: 4px; }
-  .cumle { font-size: 10px; line-height: 1.25; margin-bottom: 6px; }
-  .sozcuk { font-size: 17px; }
-  .fotoizgara { gap: 7px; }
-  .fkutu figcaption { font-size: 9px; }
-}
-
 </style>
 </head>
 <body>
