@@ -314,68 +314,83 @@
     }
   
 
-    /* Ekran düzeni: masaüstünde A4 sayfalar yan yana, telefonda tek sütun. */
-    html { min-height:100%; }
+    /* A4 görüntüleme: her .sayfa tek parça dikey A4 olarak kalır.
+       Ekranda iki sayfa yan yana; telefonda yatay/dikey kaydırma ve pinch zoom. */
+    html {
+      min-height:100%;
+      touch-action:pan-x pan-y pinch-zoom;
+      -webkit-text-size-adjust:100%;
+    }
     body {
       display:grid;
       grid-template-columns:repeat(2, 210mm);
+      grid-auto-flow:row;
       align-items:start;
-      justify-content:center;
+      justify-content:start;
       gap:22px;
       width:max-content;
       min-width:100%;
       padding:24px;
       overflow-x:auto;
+      overflow-y:visible;
+      touch-action:pan-x pan-y pinch-zoom;
     }
     .sayfa {
+      box-sizing:border-box;
       width:210mm;
+      min-width:210mm;
       max-width:none;
-      min-width:0;
+      min-height:297mm;
+      height:auto;
       margin:0;
+      padding:12mm 14mm 16mm;
+      overflow-wrap:normal;
+      box-shadow:0 4px 18px rgba(0,0,0,.28);
     }
-    img { max-width:100%; }
-
+    .sayfa.kapak {
+      padding:0;
+      overflow:hidden;
+    }
+    .izgara {
+      grid-template-columns:1fr 1fr;
+    }
+    .fotoizgara {
+      grid-template-columns:1fr 1fr;
+    }
+    .kapak img, img {
+      max-width:100%;
+    }
     @media screen and (max-width:900px) {
+      /* Mobilde A4 küçültülüp yeniden akıtılmaz; sayfa bütünlüğü korunur. */
       body {
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        width:100%;
-        min-width:0;
-        padding:12px 8px;
+        display:grid;
+        grid-template-columns:repeat(2, 210mm);
+        width:max-content;
+        min-width:100%;
+        padding:12px;
         gap:14px;
-        overflow-x:hidden;
+        overflow-x:auto;
+        overflow-y:visible;
+        align-items:start;
+        justify-content:start;
       }
       .sayfa {
-        width:100%;
-        max-width:100%;
-        min-height:0;
-        padding:24px 18px;
+        width:210mm;
+        min-width:210mm;
+        max-width:none;
+        min-height:297mm;
+        padding:12mm 14mm 16mm;
         margin:0;
-        overflow-wrap:anywhere;
-        box-shadow:0 3px 12px rgba(0,0,0,.2);
+        overflow-wrap:normal;
       }
       .sayfa.kapak { padding:0; }
-      .ust { flex-wrap:wrap; }
-      h1.okul { font-size:clamp(23px,6vw,32px); line-height:1.2; margin:30px 0; }
-      h2.proje { font-size:clamp(19px,5vw,24px); }
-      .izgara { grid-template-columns:minmax(0,1fr); }
-      .kart { min-height:0; }
-      .cumle { min-height:0; }
-      .fotoizgara { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-      .fkutu figcaption span { min-width:35%; }
-      .kapak img { width:100%; height:auto; }
-    }
-    @media screen and (max-width:420px) {
-      body { padding:8px 5px; gap:10px; }
-      .sayfa { padding:18px 12px; }
-      .sayfa.kapak { padding:0; }
-      .kart { padding:10px; }
-      .fotoizgara { grid-template-columns:minmax(0,1fr); }
-      .sozcuk { font-size:clamp(20px,6vw,26px); overflow-wrap:anywhere; }
+      .izgara { grid-template-columns:1fr 1fr; }
+      .kart { min-height:80mm; }
+      .cumle { min-height:22mm; }
+      .fotoizgara { grid-template-columns:1fr 1fr; }
     }
     @media print {
-      body {
+      html, body {
         display:block;
         width:auto;
         min-width:0;
@@ -384,6 +399,7 @@
       }
       .sayfa {
         width:210mm;
+        min-width:0;
         max-width:none;
         min-height:297mm;
         margin:0;
