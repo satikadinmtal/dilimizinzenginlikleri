@@ -312,6 +312,130 @@
         page-break-after:always;
       }
     }
+  
+    /* Responsive iyileştirmeler: mevcut masaüstü düzenini korur */
+    img {
+      max-width: 100%;
+    }
+
+    @media screen and (max-width: 700px) {
+      html, body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        padding: 10px 6px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .sayfa {
+        width: 100%;
+        max-width: 100%;
+        min-height: 0;
+        margin: 0 auto 14px;
+        padding: 18px 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.16);
+        overflow-wrap: anywhere;
+      }
+
+      .kapak {
+        padding: 0;
+      }
+
+      .ust {
+        flex-wrap: wrap;
+        font-size: 10px;
+      }
+
+      h1.okul {
+        font-size: clamp(23px, 6vw, 30px);
+        line-height: 1.2;
+        margin: 28px 0 24px;
+      }
+
+      h2.proje {
+        font-size: clamp(19px, 5vw, 24px);
+      }
+
+      .tarih {
+        font-size: 15px;
+        margin-bottom: 28px;
+      }
+
+      .izgara {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .kart {
+        min-height: 0;
+        padding: 12px;
+        margin: 0;
+      }
+
+      .cumle {
+        min-height: 0;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+
+      .sozcuk {
+        font-size: clamp(21px, 6vw, 26px);
+        overflow-wrap: anywhere;
+      }
+
+      .kazi h4 {
+        font-size: 22px;
+      }
+
+      .rapor {
+        padding: 10px;
+      }
+
+      .foto {
+        margin-top: 22px;
+      }
+
+      .fotoizgara {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .fkutu .kutu {
+        aspect-ratio: 4 / 3;
+      }
+
+      .fkutu figcaption span {
+        min-width: 45%;
+      }
+
+      .kapak img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @media screen and (min-width: 401px) and (max-width: 700px) {
+      .fotoizgara {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      .sayfa:not(.kapak) {
+        padding: 14px 10px;
+      }
+
+      .kart {
+        padding: 9px;
+      }
+
+      .es b {
+        overflow-wrap: anywhere;
+      }
+    }
+
   </style>
 </head>
 <body>
