@@ -2,852 +2,217 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
-<title>Dilimizin Zenginlikleri 19-30 Ekim Projeleri</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SATI KADIN MTAL - Dilimizin Zenginlikleri Dijital Pano</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
-    * {
-      box-sizing:border-box;
-    }
-    :root {
-      --sayfa:#FFFEF9;
-      --zemin:#D6CFC2;
-      --bordo:#7B2A20;
-      --gri:#666;
-      --cizgi:#9a9a9a;
-    }
-    html {
-      background:var(--zemin);
-    }
-    body {
-      margin:0;
-      padding:28px 12px;
-      background:var(--zemin);
-      font-family:Arial,Helvetica,sans-serif;
-      color:#111;
-      font-size:14px;
-      line-height:1.35;
-    }
-    .sayfa {
-      width:210mm;
-      max-width:100%;
-      min-height:297mm;
-      height:auto;
-      margin:0 auto 28px;
-      padding:12mm 14mm 16mm;
-      background:var(--sayfa);
-      box-shadow:0 4px 18px rgba(0,0,0,.28);
-    }
-    .ust {
-      display:flex;
-      gap:8px;
-      border-bottom:1.5px solid var(--bordo);
-      padding-bottom:4px;
-      margin-bottom:14px;
-      font-size:10px;
-      color:var(--gri);
-    }
-    .ust b {
-      color:var(--bordo);
-    }
-    h1.okul {
-      text-align:center;
-      color:var(--bordo);
-      font-size:34px;
-      line-height:1.15;
-      margin:70px 0 50px;
-    }
-    h2.proje {
-      text-align:center;
-      color:var(--bordo);
-      font-size:24px;
-      margin:0 0 16px;
-    }
-    .tarih {
-      text-align:center;
-      font-weight:700;
-      font-size:16px;
-      margin:0 0 50px;
-    }
-    .acik {
-      margin:0;
-    }
-    .acik.orta {
-      text-align:center;
-    }
-    h3.baslik {
-      font-size:17px;
-      margin:0 0 3px;
-    }
-    h3.baslik span {
-      color:var(--bordo);
-    }
-    .alt {
-      font-size:10px;
-      color:var(--gri);
-      margin:0 0 10px;
-    }
-    .izgara {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      border:1px dashed var(--cizgi);
-    }
-    .kart {
-      padding:12px 14px;
-      min-height:80mm;
-      border:1px dashed var(--cizgi);
-      margin:-.5px;
-    }
-    .no {
-      font-weight:700;
-      color:var(--bordo);
-      font-size:15px;
-      margin-bottom:8px;
-    }
-    .cumle {
-      font-weight:700;
-      font-size:14.5px;
-      line-height:1.45;
-      min-height:22mm;
-      margin:0 0 14px;
-    }
-    .harf {
-      font-weight:700;
-      font-size:16px;
-      letter-spacing:1px;
-      margin:0 0 2px;
-    }
-    .ipucu {
-      font-size:9px;
-      color:var(--gri);
-    }
-    .sozcuk {
-      font-size:26px;
-      font-weight:700;
-      color:var(--bordo);
-    }
-    .sozcuk small {
-      font-size:12px;
-      color:var(--gri);
-      margin-left:8px;
-    }
-    .tanim {
-      font-weight:700;
-      margin:6px 0 10px;
-    }
-    .es {
-      font-size:12px;
-      margin:3px 0;
-    }
-    .es i {
-      font-style:normal;
-      font-size:10px;
-      color:var(--gri);
-      font-weight:700;
-    }
-    .es b {
-      font-size:13px;
-    }
-    .ornek {
-      font-style:italic;
-      color:var(--gri);
-      font-size:11.5px;
-      margin-top:16px;
-      padding-top:8px;
-      border-top:1px solid #ccc;
-    }
-    .ornek b {
-      color:var(--bordo);
-    }
-    .etiket {
-      display:inline-block;
-      background:var(--bordo);
-      color:#fff;
-      font-weight:700;
-      font-size:13px;
-      padding:1px 6px;
-      margin-bottom:10px;
-    }
-    .alan {
-      font-size:12px;
-      margin:0 0 12px;
-      color:var(--gri);
-      font-weight:700;
-    }
-    .alan b {
-      color:#111;
-    }
-    .kazi {
-      padding:8px 14px 10px;
-    }
-    .kazi h4 {
-      font-size:24px;
-      margin:2px 0 0;
-      color:var(--bordo);
-    }
-    .kazi .tur {
-      font-size:10.5px;
-      font-style:italic;
-      color:var(--gri);
-      margin:0 0 4px;
-    }
-    .kat {
-      border-left:4px solid #A07A3A;
-      background:#F0E4CE;
-      padding:3px 8px;
-      margin:4px 0;
-      font-size:12.5px;
-      font-weight:700;
-    }
-    .kat em {
-      display:block;
-      font-style:normal;
-      font-size:8.5px;
-      letter-spacing:.5px;
-      color:var(--gri);
-    }
-    .kat.bu {
-      border-color:#4C8C7E;
-      background:#EAF3F0;
-    }
-    .senin {
-      margin:12px 0 2px;
-      font-size:9.5px;
-      font-weight:700;
-    }
-    .senin+p {
-      font-size:10.5px;
-      color:var(--gri);
-      margin:0 0 20px;
-    }
-    .rapor {
-      border:1px dashed var(--cizgi);
-      padding:12px 16px;
-      margin-bottom:16px;
-    }
-    .rapor .etiket {
-      font-size:14px;
-    }
-    .rapor .alan {
-      margin:0 0 9px;
-    }
-    .rapor .alan b {
-      display:block;
-      margin-top:2px;
-      font-size:12.5px;
-    }
-    .rapor .ad {
-      text-align:right;
-      margin:6px 0 0;
-    }
-    .foto {
-      font-size:15px;
-      font-weight:700;
-      margin:30px 0 2px;
-    }
-    .fotoizgara {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px 16px;
-      margin-top:12px;
-    }
-    .fkutu {
-      margin:0;
-    }
-    .fkutu .kutu {
-      aspect-ratio:4/3;
-      width:100%;
-      border:1.5px dashed var(--cizgi);
-      background:#fff;
-      overflow:hidden;
-    }
-    .fkutu .kutu img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .fkutu figcaption {
-      font-size:12px;
-      font-weight:700;
-      color:var(--gri);
-      margin-top:4px;
-    }
-    .fkutu figcaption span {
-      display:inline-block;
-      min-width:60%;
-      border-bottom:1px solid #999;
-    }
-    .kapak {
-      padding:0;
-      overflow:hidden;
-    }
-    .kapak img {
-      display:block;
-      width:100%;
-      height:auto;
-    }
-    @media (max-width:700px) {
-      .sayfa {
-        padding:8mm 6mm;
-      }
-      .kapak {
-        padding:0;
-      }
-      .izgara {
-        grid-template-columns:1fr;
-      }
-      h1.okul {
-        font-size:26px;
-        margin:30px 0;
-      }
-    }
-    @media print {
-      html,body {
-        background:#fff;
-        padding:0;
-      }
-      .sayfa {
-        box-shadow:none;
-        margin:0;
-        page-break-after:always;
-      }
-    }
-  
-
-    /* Ekran düzeni: webde A4 sayfalar alt alta; mobil düzeni aşağıda korunur. */
-    html { min-height:100%; }
-    body {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      gap:22px;
-      width:100%;
-      min-width:0;
-      padding:24px;
-      overflow-x:hidden;
-    }
-    .sayfa {
-      width:210mm;
-      max-width:none;
-      min-width:0;
-      margin:0;
-    }
-    img { max-width:100%; }
-
-    @media screen and (max-width:900px) {
-      body {
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        width:100%;
-        min-width:0;
-        padding:12px 8px;
-        gap:14px;
-        overflow-x:hidden;
-      }
-      .sayfa {
-        width:100%;
-        max-width:100%;
-        min-height:0;
-        padding:24px 18px;
-        margin:0;
-        overflow-wrap:anywhere;
-        box-shadow:0 3px 12px rgba(0,0,0,.2);
-      }
-      .sayfa.kapak { padding:0; }
-      .ust { flex-wrap:wrap; }
-      h1.okul { font-size:clamp(23px,6vw,32px); line-height:1.2; margin:30px 0; }
-      h2.proje { font-size:clamp(19px,5vw,24px); }
-      .izgara { grid-template-columns:minmax(0,1fr); }
-      .kart { min-height:0; }
-      .cumle { min-height:0; }
-      .fotoizgara { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-      .fkutu figcaption span { min-width:35%; }
-      .kapak img { width:100%; height:auto; }
-    }
-    @media screen and (max-width:420px) {
-      body { padding:8px 5px; gap:10px; }
-      .sayfa { padding:18px 12px; }
-      .sayfa.kapak { padding:0; }
-      .kart { padding:10px; }
-      .fotoizgara { grid-template-columns:minmax(0,1fr); }
-      .sozcuk { font-size:clamp(20px,6vw,26px); overflow-wrap:anywhere; }
-    }
-    @media print {
-      body {
-        display:block;
-        width:auto;
-        min-width:0;
-        padding:0;
-        overflow:visible;
-      }
-      .sayfa {
-        width:210mm;
-        max-width:none;
-        min-height:297mm;
-        margin:0;
-        box-shadow:none;
-        page-break-after:always;
-        break-after:page;
-      }
-    }
-
-
-/* ===== KAPAK SAYFALARI (resim yerine kod) ===== */
-.sayfa.kc{container-type:inline-size;aspect-ratio:210/297;min-height:0;height:auto;padding:0;overflow:hidden;background:#FBF8F2;color:#2A1E1A;font-family:'Source Serif 4',Georgia,serif}
-.kc .frame{position:absolute;inset:4.5cqw;border:.4cqw dashed #8E1B1B}
-.kc .inner{position:absolute;inset:4.5cqw;padding:7cqw 8cqw;display:flex;flex-direction:column}
-.kc .school{font-weight:600;font-size:2.5cqw;letter-spacing:.12em;text-align:center;color:#8E1B1B;line-height:1.5}
-.kc .rule{height:.5cqw;background:#8E1B1B;margin:3cqw auto;width:100%}
-.kc .proj{align-self:center;background:#8E1B1B;color:#FBF8F2;font-weight:600;font-size:2.6cqw;padding:1.1cqw 3cqw;letter-spacing:.08em}
-.kc h1{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:9.6cqw;line-height:1.05;text-align:center;margin:4cqw 0 0;color:#2A1E1A}
-.kc .spacer{flex:1}
-.kc .date{margin-top:auto;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:3.6cqw;color:#8E1B1B;text-align:center}
-.kc .box{margin-top:3cqw;padding:3.2cqw 3.6cqw;border-left:1.2cqw solid #8E1B1B;font-size:3.2cqw;line-height:1.55}
-.kc.k1 .box{background:#E4EEF1}
-.kc.k2 .box{background:#F0E4D0}
-/* ===== KAPAK SONU ===== */
-
-/* ===== OKUL LOGOSU FİLİGRANI (kapaklar dahil tüm sayfalar) =====
-   */
-.sayfa {
-  position: relative;
-  isolation: isolate;
-}
-.sayfa::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: url("data:image/png;base64,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") center 52% / min(78%, 135mm) auto no-repeat;
-  opacity: .11;
-  pointer-events: none;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-/* ===== FİLİGRAN SONU ===== */
-
+:root{--bg:#dbe5eb;--card:#f4f8fa;--denim:#3b6c8a;--deep:#27465a;--gold:#d99a2b;--line:#b9cad5;--ink:#1d3140;
+--serif:'Fraunces',Georgia,serif;--sans:'Source Sans 3',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px;min-height:100vh}
+/* Filigran: logo her sayfanin arkasinda */
+body::before{content:"";position:fixed;inset:0;background:url(okullogoyuvarlak.jpeg) center/min(70vmin,520px) no-repeat;opacity:.09;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+header,nav,main,footer{position:relative;z-index:1}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header{background:var(--denim);color:#fff;padding:16px 20px}
+.brand{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.brand img{width:72px;height:72px;border-radius:50%;background:#fff;padding:3px;object-fit:contain;flex-shrink:0}
+.brand h1{font-family:var(--serif);font-weight:800;font-size:clamp(1.05rem,2.5vw,1.8rem);line-height:1.2}
+nav{background:var(--deep);position:sticky;top:0;z-index:20}
+.menu{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;list-style:none;padding:0 8px}
+.menu a{display:block;color:#fff;text-decoration:none;padding:13px 15px;border-bottom:3px solid transparent;font-weight:600;cursor:pointer}
+.menu a:hover,.menu a.active{background:#34586f}
+.menu a.active{border-bottom-color:var(--gold)}
+.burger{display:none;background:none;border:0;color:#fff;font:600 1rem var(--sans);padding:13px 18px;cursor:pointer;width:100%;text-align:left}
+.scrim{display:none}
+@media(max-width:820px){
+.burger{display:block}
+.menu{position:fixed;top:0;left:0;bottom:0;width:260px;background:var(--deep);flex-direction:column;flex-wrap:nowrap;padding:60px 0 20px;transform:translateX(-100%);transition:transform .25s;z-index:40;overflow:auto}
+.menu a{border-bottom:0;border-left:4px solid transparent;padding:14px 22px}
+.menu a.active{border-left-color:var(--gold)}
+body.open .menu{transform:none}
+body.open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30}
+.brand img{width:54px;height:54px}}
+main{max-width:1100px;margin:0 auto;padding:26px 20px 60px}
+.page{display:none}.page.show{display:block}
+h2{font-family:var(--serif);font-weight:800;font-size:1.9rem;margin-bottom:8px}
+.lead{max-width:62ch;margin-bottom:18px}
+.back{background:none;border:2px solid var(--denim);color:var(--deep);font:600 .95rem var(--sans);padding:7px 14px;border-radius:4px;cursor:pointer;margin-bottom:16px}
+.back:hover{background:var(--denim);color:#fff}
+.hero{background:var(--deep);color:#fff;padding:36px 26px;border-left:8px solid var(--gold);margin-bottom:26px;border-radius:4px}
+.hero h2{font-size:clamp(1.5rem,4vw,2.4rem);max-width:20ch}
+.hero p{max-width:55ch;margin-top:10px;opacity:.92}
+.btn{display:inline-block;margin-top:16px;background:var(--gold);color:#1d2a33;border:0;padding:11px 20px;font:600 1rem var(--sans);cursor:pointer;border-radius:4px}
+.btn:hover{background:#e6ab42}
+/* Etkinlikler: icerik solda, ay menusu sagda */
+.ev-layout{display:grid;grid-template-columns:1fr 210px;gap:22px;align-items:start}
+.months{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);padding:12px;border-radius:4px;position:sticky;top:64px}
+.months h3{font-family:var(--serif);font-size:1.05rem;margin-bottom:2px}
+.mb{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line);border-left:5px solid var(--line);padding:9px 12px;font:600 .98rem var(--sans);color:var(--ink);cursor:pointer;border-radius:3px;text-align:left}
+.mb:hover{border-left-color:var(--gold)}
+.mb.on{background:var(--denim);color:#fff;border-left-color:var(--gold)}
+.mb span{opacity:.75;font-weight:400}
+@media(max-width:820px){.ev-layout{grid-template-columns:1fr}.months{order:-1;flex-direction:row;flex-wrap:wrap;position:static}.months h3{width:100%}}
+.ev{display:grid;grid-template-columns:1fr auto;gap:4px 14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--denim);padding:13px 16px;margin-bottom:10px;cursor:pointer;font:inherit;color:inherit;border-radius:3px}
+.ev:hover{border-left-color:var(--gold);background:#fff}
+.ev strong{font-family:var(--serif);font-size:1.12rem}
+.ev .cat{font-size:.9rem;color:var(--denim);font-weight:600}
+.ev p{grid-column:1/-1;font-size:.96rem}
+.empty{padding:22px;border:2px dashed var(--line);border-radius:4px;background:rgba(255,255,255,.5)}
+/* Onizleme: ayni sayfada */
+#preview{display:none;background:var(--card);border:1px solid var(--line);border-radius:4px;margin-bottom:16px;overflow:hidden}
+#preview.show{display:block}
+.p-head{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.p-head h3{font-family:var(--serif);font-size:1.25rem;line-height:1.25}
+.p-head small{color:var(--denim);font-weight:600}
+.p-desc{padding:8px 16px;font-size:.96rem}
+.viewer{position:relative;height:72vh;background:#cfdbe3}
+.viewer iframe{width:100%;height:100%;border:0}
+.viewer .wm{position:absolute;inset:0;background:url(okullogoyuvarlak.jpeg) center/min(55%,380px) no-repeat;opacity:.10;mix-blend-mode:multiply;pointer-events:none}
+.viewer .shield{position:absolute;top:0;right:0;width:64px;height:60px}
+.nofile{padding:24px 16px}
+footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:18px;font-size:.92rem}
+.contact li{margin-bottom:8px;list-style:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="sayfa kapak kc k1">
-    <div class="frame"></div>
-    <div class="inner">
-      <div class="school">SATI KADIN MESLEKİ VE TEKNİK<br>ANADOLU LİSESİ</div>
-      <div class="rule"></div>
-      <div class="proj">DİLİMİZİN ZENGİNLİKLERİ PROJESİ</div>
-      <h1>Dijital<br>Kelime Avı</h1>
-      <div class="spacer"></div>
-      <div class="date">19-23 Ekim</div>
-      <div class="box">Panodaki ipucu cümlelerini oku, eksik kelimeyi bul. Sözlük anlamını, eş ve zıt anlamlısını araştır. Cevaplar Kelime Duvarı'nda!</div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="baslik"><span>ANLAMINI BUL</span> · İpucu Kartları 1-6</h3>
-    <p class="alt">Kesip panoya asın. Kelime kartta yazmaz.</p>
-    <div class="izgara">
-      <div class="kart">
-        <div class="no">01</div>
-        <p class="cumle">Gurbetteki şair, köyünün dumanı tüten bacalarına duyduğu __________ dizelerine döktü.</p>
-        <div class="harf">H&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">6 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">02</div>
-        <p class="cumle">Yıllar sonra bile eski öğretmenini bayramlarda arayan Elif, gerçek bir __________ örneği gösteriyordu.</p>
-        <div class="harf">V&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">4 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">03</div>
-        <p class="cumle">Büyük ödülü kazanmasına rağmen __________ tavrını hiç bozmadı.</p>
-        <div class="harf">M&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">8 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">04</div>
-        <p class="cumle">Kitabın ilk sayfasındaki dizeler ona hiç yabancı gelmedi; bu sözlere sanki eskiden beri __________ gibiydi.</p>
-        <div class="harf">A&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">5 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">05</div>
-        <p class="cumle">Dakikalarca kapıyı çalması __________ oldu; içeride kimse yoktu.</p>
-        <div class="harf">B&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">7 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">06</div>
-        <p class="cumle">Müzede, yalnızca birkaç örneği kalmış __________ el yazmaları sergileniyordu.</p>
-        <div class="harf">N&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">6 harf · ilk harfi verildi</div>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="baslik"><span>ANLAMINI BUL</span> · İpucu Kartları 7-12</h3>
-    <p class="alt">Kesip panoya asın. Kelime kartta yazmaz.</p>
-    <div class="izgara">
-      <div class="kart">
-        <div class="no">07</div>
-        <p class="cumle">Bu __________ şehrin taş sokakları, yüzyılların hikâyesini fısıldıyordu.</p>
-        <div class="harf">K&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">5 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">08</div>
-        <p class="cumle">Şiirdeki ses tekrarları dizelere hoş bir __________ katıyordu.</p>
-        <div class="harf">A&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">5 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">09</div>
-        <p class="cumle">Verdiği cevap öyle __________ idi ki kimse ne demek istediğini anlamadı.</p>
-        <div class="harf">M&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">6 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">10</div>
-        <p class="cumle">Arkadaşları tatile gidince bahçede tek başına kalan çocuk __________ bir yüzle oturuyordu.</p>
-        <div class="harf">M&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">6 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">11</div>
-        <p class="cumle">Dedesinin __________ elleri, torununun saçlarını yavaşça okşadı.</p>
-        <div class="harf">M&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">6 harf · ilk harfi verildi</div>
-      </div>
-      <div class="kart">
-        <div class="no">12</div>
-        <p class="cumle">Eski kitabın sayfalarını yırtmamak için büyük bir __________ ile çevirdi.</p>
-        <div class="harf">İ&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;_</div>
-        <div class="ipucu">5 harf · ilk harfi verildi</div>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="baslik"><span>KELİME DUVARI</span> · Cevap Kartları 1-6</h3>
-    <p class="alt">Hafta sonunda ipucu kartlarının yanına asın.</p>
-    <div class="izgara">
-      <div class="kart">
-        <div class="sozcuk">HASRET<small>01</small></div>
-        <p class="tanim">Görmeyi, kavuşmayı çok istediği birini ya da bir yeri özleme duygusu.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>özlem</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>vuslat (kavuşma)</b></div>
-        <p class="ornek">Gurbetteki şair, köyünün dumanı tüten bacalarına duyduğu <b>hasret</b> dizelerine döktü.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">VEFA<small>02</small></div>
-        <p class="tanim">Sevgide, dostlukta sözünde durma; bağlılığı sürdürme.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>sadakat</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>vefasızlık</b></div>
-        <p class="ornek">Yıllar sonra bile eski öğretmenini bayramlarda arayan Elif, gerçek bir <b>vefa</b> örneği gösteriyordu.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">MÜTEVAZI<small>03</small></div>
-        <p class="tanim">Kendini başkalarından üstün görmeyen, alçakgönüllü.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>alçakgönüllü</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>kibirli</b></div>
-        <p class="ornek">Büyük ödülü kazanmasına rağmen <b>mütevazı</b> tavrını hiç bozmadı.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">AŞİNA<small>04</small></div>
-        <p class="tanim">Önceden bilinen, tanıdık, bildik.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>tanıdık</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>yabancı</b></div>
-        <p class="ornek">Kitabın ilk sayfasındaki dizeler ona hiç yabancı gelmedi; bu sözlere sanki eskiden beri <b>aşina</b> gibiydi.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">BEYHUDE<small>05</small></div>
-        <p class="tanim">Boşuna, yararsız, sonuç vermeyen.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>nafile</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>yararlı</b></div>
-        <p class="ornek">Dakikalarca kapıyı çalması <b>beyhude</b> oldu; içeride kimse yoktu.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">NADİDE<small>06</small></div>
-        <p class="tanim">Az bulunan, ender ve değerli.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>ender</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>sıradan</b></div>
-        <p class="ornek">Müzede, yalnızca birkaç örneği kalmış <b>nadide</b> el yazmaları sergileniyordu.</p>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="baslik"><span>KELİME DUVARI</span> · Cevap Kartları 7-12</h3>
-    <p class="alt">Hafta sonunda ipucu kartlarının yanına asın.</p>
-    <div class="izgara">
-      <div class="kart">
-        <div class="sozcuk">KADİM<small>07</small></div>
-        <p class="tanim">Çok eski, eskiden beri var olan.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>eski</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>yeni</b></div>
-        <p class="ornek">Bu <b>kadim</b> şehrin taş sokakları, yüzyılların hikâyesini fısıldıyordu.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">AHENK<small>08</small></div>
-        <p class="tanim">Seslerin, renklerin ya da parçaların birbirine uyumu.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>uyum</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>uyumsuzluk</b></div>
-        <p class="ornek">Şiirdeki ses tekrarları dizelere hoş bir <b>ahenk</b> katıyordu.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">MUĞLAK<small>09</small></div>
-        <p class="tanim">Anlaşılması güç, ne demek istediği belli olmayan.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>müphem</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>açık</b></div>
-        <p class="ornek">Verdiği cevap öyle <b>muğlak</b> idi ki kimse ne demek istediğini anlamadı.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">MAHZUN<small>10</small></div>
-        <p class="tanim">Hüzünlü, üzgün, boynu bükük.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>kederli</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>neşeli</b></div>
-        <p class="ornek">Arkadaşları tatile gidince bahçede tek başına kalan çocuk <b>mahzun</b> bir yüzle oturuyordu.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">MÜŞFİK<small>11</small></div>
-        <p class="tanim">Şefkatli, sevgi ve koruma duygusu taşıyan.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>sevecen</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>merhametsiz</b></div>
-        <p class="ornek">Dedesinin <b>müşfik</b> elleri, torununun saçlarını yavaşça okşadı.</p>
-      </div>
-      <div class="kart">
-        <div class="sozcuk">İTİNA<small>12</small></div>
-        <p class="tanim">Bir işi dikkatle, özenle yapma.</p>
-        <div class="es"><i>Eş anlamlısı:</i> <b>özen</b></div>
-        <div class="es"><i>Zıt anlamlısı:</i> <b>özensizlik</b></div>
-        <p class="ornek">Eski kitabın sayfalarını yırtmamak için büyük bir <b>itina</b> ile çevirdi.</p>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="baslik"><span>ANLAMINI BUL</span> · Öğrenci Araştırma Kartı</h3>
-    <p class="alt">Her öğrenciye bir kart. Doldurulan kartlar Kelime Duvarı'na eklenir.</p>
-    <div class="izgara">
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “1</span><p class="alan">Kart no: <b>1.Kart</b></p><p class="alan">Bulduğum kelime: <b>HASRET</b></p><p class="alan">Sözlük anlamı: <b>Görmeyi, kavuşmayı çok istediği birini ya da bir yeri özleme duygusu.</b></p><p class="alan">Eş anlamlısı: <b>özlem</b></p><p class="alan">Zıt anlamlısı: <b>vuslat (kavuşma)</b></p><p class="alan">Benim cümlem: <b>Yıllardır görmediği annesine duyduğu hasret, onu her akşam pencerenin önünde bekletiyordu.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>Efe 10/A</b></p></div>
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “2</span><p class="alan">Kart no: <b>2.Kart</b></p><p class="alan">Bulduğum kelime: <b>VEFA</b></p><p class="alan">Sözlük anlamı: <b>Sevgide, dostlukta sözünde durma; bağlılığı sürdürme.</b></p><p class="alan">Eş anlamlısı: <b>sadakat</b></p><p class="alan">Zıt anlamlısı: <b>vefasızlık</b></p><p class="alan">Benim cümlem: <b>Yıllar sonra bile öğretmenini arayan Elif, gerçek bir vefa örneği gösteriyordu.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>Sabri 10/A</b></p></div>
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “3</span><p class="alan">Kart no: <b>3.Kart</b></p><p class="alan">Bulduğum kelime: <b>MÜTEVAZI</b></p><p class="alan">Sözlük anlamı: <b>Kendini başkalarından üstün görmeyen, alçakgönüllü.</b></p><p class="alan">Eş anlamlısı: <b>alçakgönüllü</b></p><p class="alan">Zıt anlamlısı: <b>kibirli</b></p><p class="alan">Benim cümlem: <b>Büyük bir başarı kazanmasına rağmen mütevazı yaşayışını hiç bozmadı.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>Rümeysa 11/C</b></p></div>
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “4</span><p class="alan">Kart no: <b>4.Kart</b></p><p class="alan">Bulduğum kelime: <b>AŞİNA</b></p><p class="alan">Sözlük anlamı: <b>Önceden bilinen, tanıdık, bildik.</b></p><p class="alan">Eş anlamlısı: <b>tanıdık</b></p><p class="alan">Zıt anlamlısı: <b>yabancı</b></p><p class="alan">Benim cümlem: <b>Yıllar sonra girdiği odadaki kokular ona hiç yabancı gelmedi; her şeye aşina gibiydi.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>Taha 10/C</b></p></div>
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “5</span><p class="alan">Kart no: <b>5.Kart</b></p><p class="alan">Bulduğum kelime: <b>BEYHUDE</b></p><p class="alan">Sözlük anlamı: <b>Boşuna, yararsız, sonuç vermeyen.</b></p><p class="alan">Eş anlamlısı: <b>nafile</b></p><p class="alan">Zıt anlamlısı: <b>yararlı</b></p><p class="alan">Benim cümlem: <b>Yağmura rağmen sabaha kadar beklemesi beyhude oldu; otobüs hiç gelmedi.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>Ela 11/C</b></p></div>
-      <div class="kart"><span class="etiket">KELİME AVCISI KARTI “6</span><p class="alan">Kart no: <b>6.KART</b></p><p class="alan">Bulduğum kelime: <b>NADİDE</b></p><p class="alan">Sözlük anlamı: <b>Az bulunan, ender ve değerli.</b></p><p class="alan">Eş anlamlısı: <b>ender</b></p><p class="alan">Zıt anlamlısı: <b>sıradan</b></p><p class="alan">Benim cümlem: <b>Koleksiyoncunun vitrininde dünyada yalnızca birkaç tanesi bulunan nadide pullar sergileniyordu.</b></p><p class="alan">Öğrencinin Adı / Sınıfı: <b>İkra 11/C</b></p></div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 19-23 Ekim 2026</span></div>
-    <h3 class="foto">ANLAMINI BUL ETKİNLİĞİ · FOTOĞRAFLANDIRILMASI</h3>
-    <p class="alt">Her öğrenci’nin yaptığı kart ve fotoğraflandırılması.</p>
-    <div class="fotoizgara">
-      <figure class="fkutu">
-        <div class="kutu"><img src="1.jpg" alt="Etkinlik fotoğrafı 1"></div>
-        <figcaption>Kart no: 1<span>&nbsp;</span></figcaption>
-      </figure>
-      <figure class="fkutu">
-        <div class="kutu"><img src="2.jpg" alt="Etkinlik fotoğrafı 2"></div>
-        <figcaption>Kart no: 2<span>&nbsp;</span></figcaption>
-      </figure>
-      <figure class="fkutu">
-        <div class="kutu"><img src="3.jpg" alt="Etkinlik fotoğrafı 3"></div>
-        <figcaption>Kart no: 3<span>&nbsp;</span></figcaption>
-      </figure>
-      <figure class="fkutu">
-        <div class="kutu"><img src="4.jpg" alt="Etkinlik fotoğrafı 4"></div>
-        <figcaption>Kart no: 4<span>&nbsp;</span></figcaption>
-      </figure>
-      <figure class="fkutu">
-        <div class="kutu"><img src="5.jpg" alt="Etkinlik fotoğrafı 5"></div>
-        <figcaption>Kart no: 5<span>&nbsp;</span></figcaption>
-      </figure>
-      <figure class="fkutu">
-        <div class="kutu"><img src="6.jpg" alt="Etkinlik fotoğrafı 6"></div>
-        <figcaption>Kart no: 6<span>&nbsp;</span></figcaption>
-      </figure>
-    </div>
-  </section>
-  <section class="sayfa kapak kc k2">
-    <div class="frame"></div>
-    <div class="inner">
-      <div class="school">SATI KADIN MESLEKİ VE TEKNİK<br>ANADOLU LİSESİ</div>
-      <div class="rule"></div>
-      <div class="proj">DİLİMİZİN ZENGİNLİKLERİ PROJESİ</div>
-      <h1>Kelime<br>Arkeolojisi</h1>
-      <div class="spacer"></div>
-      <div class="date">5-30 Ekim · Klasik metinlerden kelime kazısı</div>
-      <div class="box">Klasik metinlerin derinliklerinde unutulmaya yüz tutmuş, seyrek kullanılan ya da anlamı değişmiş kelimeler var. Kazı yap, katmanları ortaya çıkar, bulduğunu kataloğa ekle!</div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 5-30 Ekim 2026 / Örnek Kazı Kartları 1-8</span></div>
-    <h3 class="baslik"><span>KELİME ARKEOLOJİSİ</span> · Örnek Kazı Kartları 1-8</h3>
-    <p class="alt">Kelimelerin eski ve bugünkü anlam katmanları. Panoya örnek olarak asın.</p>
-    <div class="izgara">
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>OĞUL</h4>
-          <p class="tur">Anlam daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>“Yavru, çocuk”; hem kız hem erkek çocuk için kullanılırdı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Yalnızca erkek çocuk için kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>YOKSUL</h4>
-          <p class="tur">Anlam Kayması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski metinlerde &quot;akılsız, çaresiz, ussuz&quot; anlamında kullanılırdı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Maddi imkânı olmayan, fakir kimse için kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>TANRI</h4>
-          <p class="tur">Anlam daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçede “teñri”: gök, gökyüzü ve Tanrı anlamlarını birlikte taşırdı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Yalnızca “Yaradan” anlamında kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>UCUZ</h4>
-          <p class="tur">Anlam Kötülenmesi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>&quot;Bulunmaz, nadir, kıymetli, değerli&quot; anlamı taşırdı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Fiyatı düşük, değeri az veya kalitesiz olan şey.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>DAVAR</h4>
-          <p class="tur">Anlam daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>“Mal, mülk, eşya” anlamındaydı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>“Koyun, keçi” gibi küçükbaş hayvanlar için kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>KONUK</h4>
-          <p class="tur">Anlam daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Genel olarak &quot;yolcu, bir yerde konaklayan kişi&quot; demekti.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Bir eve veya yere kısa süreliğine ağırlanmaya gelen misafir.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>GEYİK</h4>
-          <p class="tur">Anlam daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçe metinlerde genel olarak “yabani hayvan” anlamındaydı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Uzun, çatallı boynuzları olan belirli bir hayvanın adıdır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>YAVUZ</h4>
-          <p class="tur">Anlam iyileşmesi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçe ve Dede Korkut&#x27;ta &quot;kötü, fena, berbat&quot; demekti.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>&quot;Güçlü, çetin, yiğit, gürbüz&quot; anlamında olumlu kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 5-30 Ekim 2026 / Örnek Kazı Kartları 8-16</span></div>
-    <h3 class="baslik"><span>KELİME ARKEOLOJİSİ</span> · Örnek Kazı Kartları 8-16</h3>
-    <p class="alt">Kelimelerin eski ve bugünkü anlam katmanları. Panoya örnek olarak asın.</p>
-    <div class="izgara">
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>GÖRKLÜ</h4>
-          <p class="tur">Seyrek / Unutulmuş</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Dede Korkut ve Yunus Emre&#x27;de &quot;güzel, görkemli, kutlu, mübarek&quot;.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Günlük dilde yerini &quot;görkemli&quot; veya &quot;güzel&quot; kelimelerine bırakmıştır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>YALVAÇ</h4>
-          <p class="tur">Unutulmuş / Seyrek</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçe metinlerde &quot;elçi, haber getiren, peygamber&quot; demekti.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Günümüz Türkçesinde unutulmuş, yalnızca edebî veya tarihî metinlerde geçer.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>SAV</h4>
-          <p class="tur">Anlam değişmesi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>“Söz” anlamındaydı. Savcı ve savunmak kelimeleri bu kökle ilişkilendirilir.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>“İddia, tez” anlamında kullanılır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>ULU</h4>
-          <p class="tur">Anlam Genişlemesi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Öncelikle &quot;yaşça büyük, ihtiyar, yaşlı kişi&quot; için kullanılırdı.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Yüce, erdemli, yüksek, büyük ve hürmete layık olan.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>BİLE</h4>
-          <p class="tur">Biçim ve anlam değişmesi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>“Birle” biçimindeydi; “birlikte, beraber” anlamına gelirdi.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>“Dahi” anlamında kullanılır: “O bile geldi.”</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>AYRUK</h4>
-          <p class="tur">Anlam ve Biçim Değişimi</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Klasik metinlerde &quot;başka, özge, bundan böyle&quot; anlamına gelirdi.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Bugün &quot;ayrı, ayrıcalıklı&quot; biçiminde gelişmiş, &quot;ayruk&quot; formu terk edilmiştir.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-      <div class="kart" style="min-height:0">
-        <div class="kazi">
-          <h4>BÖCÜ</h4>
-          <p class="tur">Anlam Daralması</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçede genel olarak &quot;küçük mahluk, sevimli küçük canlı, yavru&quot; demekti.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Günümüzde anlamı daralarak sadece &quot;böcek, haşere&quot; anlamında kalmıştır.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-        <div class="kazi">
-          <h4>US</h4>
-          <p class="tur">Daralma / Deyimleşme</p>
-          <div class="kat"><em>ESKİ KATMAN</em>Eski Türkçe ve Divan edebiyatında &quot;akıl, anlama yeteneği, zekâ&quot; demekti.</div>
-          <div class="kat bu"><em>BUGÜNKÜ KATMAN</em>Yalın kullanımı azalmış; &quot;uslu, uslanmak, usuna gelmek&quot; türevlerinde yaşar.</div>
-          <p class="senin">Senin kazın:</p>
-          <p>Bu kelimeyi bir klasik metinde ara, geçtiği cümleyi yaz.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="sayfa">
-    <div class="ust"><b>DİLİMİZİN ZENGİNLİKLERİ</b><span>·</span><span>Lise · 5-30 Ekim 2026</span></div>
-    <h3 class="baslik"><span>KELİME ARKEOLOJİSİ</span> · Öğrenci Kazı Raporu</h3>
-    <p class="alt">Öğrenci kendi bulduğu kelimeyi işler. Raporlar okul sergisinde ve dijital katalogda toplanır.</p>
-    <div class="rapor"><span class="etiket">KAZI RAPORU “Tanrı”</span><p class="alan">Bulduğum kelime: <b>TANRI</b></p><p class="alan">Bulunduğu klasik metin: <b>Dede Korkut Kitabı (Dirse Han Oğlu Buğaç Han Boyu)</b></p><p class="alan">Metindeki cümle: <b>Ecel vade ermeyince kimse ölmez; ölen adam dirilmez; çıkan can geri gelmez; kibirlilik eyleyeni Tanrı sevmez.</b></p><p class="alan">Sözlük anlamı: <b>Evreni ve insanı yaratan, her şeyi yöneten yüce varlık; Allah.</b></p><p class="alan">Zamanla nasıl değişti: <b>Eski Türkçede “teñri” sözü gök, gökyüzü ve Tanrı anlamlarını birlikte taşırdı. Zamanla gökyüzü anlamı unutuldu, bugün yalnızca “Yaradan” anlamında kullanılıyor.</b></p><p class="alan">Deyim / atasözü bağı: <b>Tanrı misafiri: Beklenmedik bir zamanda gelen konuk · Tanrı vergisi: Doğuştan gelen yetenek.</b></p><p class="alan ad">Öğrencinin Adı / Sınıfı: <b style="display:inline">Sabri 10/A</b></p></div>
-    <div class="rapor"><span class="etiket">KAZI RAPORU “Yalvaç”</span><p class="alan">Bulduğum kelime: <b>YALVAÇ</b></p><p class="alan">Bulunduğu klasik metin: <b>Kutadgu Bilig (Yusuf Has Hâcib), 2643. beyit</b></p><p class="alan">Metindeki cümle: <b>Elçi erdemli ve bilgili olursa hükümdarın adının ülkede yücelmesini anlatıyor. Bu, benim kendi sözlerimle özetim, çeviri değil.</b></p><p class="alan">Sözlük anlamı: <b>Eski Türkçe yalāvaç veya yalāvar kelimesinden türetilmiştir; &quot;elçi, haberci, haber getiren, yol gösterici&quot; demektir.</b></p><p class="alan">Zamanla nasıl değişti: <b>Eski Türklerde ve Orhun Yazıtları gibi ilk dönem yazılı eserlerde peygamber kelimesi yerine yalvaç sözcüğü kullanılırdı. Allah katından gelen vahiyleri insanlara ileten kimse anlamı taşır</b></p><p class="alan">Deyim / atasözü bağı: <b>Yalvaç, “yalvarmak” filiyle de akraba gibi görünür.</b></p><p class="alan ad">Öğrencinin Adı / Sınıfı: <b style="display:inline">Efe 10/A</b></p></div>
-  </section>
+<header><div class="brand">
+<img src="okullogoyuvarlak.jpeg" alt="Okul logosu" onerror="this.style.visibility='hidden'">
+<h1>SATI KADIN MTAL - Dilimizin Zenginlikleri Dijital Pano</h1>
+</div></header>
+
+<nav aria-label="Ana menü">
+<button class="burger" id="burger" aria-expanded="false">☰ Menü</button>
+<ul class="menu" id="menu">
+<li><a data-p="ana">Ana Sayfa</a></li>
+<li><a data-p="etkinlikler">Etkinlikler</a></li>
+<li><a data-p="duyurular">Duyurular</a></li>
+<li><a data-p="galeri">Galeri</a></li>
+<li><a data-p="kelime">Kelime Köşesi</a></li>
+<li><a data-p="hakkimizda">Hakkımızda</a></li>
+<li><a data-p="iletisim">İletişim</a></li>
+</ul></nav>
+<div class="scrim" id="scrim"></div>
+
+<main>
+<section class="page" id="ana">
+<div class="hero"><h2>Dilimizi birlikte yaşatıyoruz</h2>
+<p>Her ayın dil ve edebiyat etkinliklerini bu panodan görüntüleyebilirsiniz.</p>
+<button class="btn" data-go="etkinlikler">Etkinlikleri gör</button></div>
+<h2>Son eklenenler</h2><div id="latest"></div>
+</section>
+
+<section class="page" id="etkinlikler">
+<button class="back" data-go="ana">Ana Sayfaya Dön</button>
+<h2 id="mTitle">Etkinlikler</h2>
+<div class="ev-layout">
+<div><div id="preview"></div><div id="list"></div></div>
+<aside class="months" id="months" aria-label="Aylar"></aside>
+</div>
+</section>
+
+<section class="page" id="duyurular"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Duyurular</h2><p class="lead">Yakında.</p></section>
+<section class="page" id="galeri"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Galeri</h2><p class="lead">Yakında.</p></section>
+<section class="page" id="kelime"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Kelime Köşesi</h2><p class="lead">Yakında.</p></section>
+
+<section class="page" id="hakkimizda">
+<button class="back" data-go="ana">Ana Sayfaya Dön</button>
+<h2>Hakkımızda</h2>
+<!-- BURAYA KENDİ METNİNİZİ YAZIN -->
+</section>
+
+<section class="page" id="iletisim">
+<button class="back" data-go="ana">Ana Sayfaya Dön</button>
+<h2>İletişim</h2>
+<ul class="contact">
+<!-- Bilgileri kendi okulunuzunkilerle değiştirin -->
+<li><b>Adres:</b> <a href="https://maps.google.com/?q=Satı Kadın Mesleki ve Teknik Anadolu Lisesi, Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara" target="_blank" rel="noopener">Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara</a></li>
+<li><b>Telefon:</b> <a href="tel:+(0312) 244 31 39">(0312) 244 31 39</a></li>
+<li><b>E-posta:</b> <a href="mailto:mtalsatikadin@gmail.com">mtalsatikadin@gmail.com</a></li>
+<li><b>Instagram:</b> <a href="https://instagram.com/satikadinmtal" target="_blank" rel="noopener">@satikadinmtal</a></li>
+</ul>
+</section>
+</main>
+<footer>SATI KADIN MTAL - Dilimizin Zenginlikleri Dijital Pano</footer>
+
+<script>
+/* AYARLAR */
+// Google Sheets > Dosya > Paylaş > Web'de yayınla > CSV linkini buraya yapıştırın. Boşsa örnek veri görünür.
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQQZ2vwBz4UcyIo9A9oLGLsX4wXrbHC522rtD0hdBlj3-XgiNK3P2cQY7WFyYqdQbxe4tqq7eDW6fBK/pub?output=csv";
+// AY LİSTESİ: Aralıkta 2027 aylarını buraya ekleyin. Google Form'daki "Ay" seçenekleriyle BİREBİR aynı yazılmalı.
+const MONTHS = ["Ekim 2026","Kasım 2026","Aralık 2026"];
+// Form sütunları: Zaman damgası, Ay, Başlık, Kısa Açıklama, Kategori, Dosya
+
+const DEMO=[
+{ay:"Ekim 2026",baslik:"Şiir Dinletisi",aciklama:"Öğrencilerimiz şiirleri seslendirdi.",kategori:"Şiir",dosya:""},
+{ay:"Ekim 2026",baslik:"Yazım Kuralları Sunumu",aciklama:"Sık yapılan yazım hataları.",kategori:"Yazım",dosya:""},
+{ay:"Kasım 2026",baslik:"Kitap Günü",aciklama:"Sınıflar kitaplarını tanıttı.",kategori:"Kitap",dosya:""}];
+let events=[],cur="";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>(s||"").trim().toLocaleLowerCase("tr");
+const inMonth=m=>events.filter(e=>norm(e.ay)===norm(m));
+const fileId=u=>{const m=(u||"").match(/[?&]id=([\w-]+)|\/d\/([\w-]+)/);return m?(m[1]||m[2]):""};
+
+function parseCSV(t){const rows=[];let r=[],c="",q=false;
+for(let i=0;i<t.length;i++){const ch=t[i];
+if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+else if(ch=='"')q=true;else if(ch==','){r.push(c);c=""}
+else if(ch=='\n'){r.push(c);rows.push(r);r=[];c=""}else if(ch!='\r')c+=ch}
+if(c||r.length){r.push(c);rows.push(r)}return rows}
+
+async function load(){
+if(!SHEET_CSV_URL){events=DEMO;return}
+try{const res=await fetch(SHEET_CSV_URL);
+events=parseCSV(await res.text()).slice(1).filter(r=>r[2]).map(r=>({ay:r[1],baslik:r[2],aciklama:r[3],kategori:r[4],dosya:r[5]})).reverse()}
+catch(e){events=[]}}
+
+/* Sayfa gecisi: adres cubuguna bagli degil, dogrudan JS */
+function showPage(id){
+if(!document.getElementById(id))id="ana";
+document.querySelectorAll(".page").forEach(s=>s.classList.toggle("show",s.id===id));
+document.querySelectorAll(".menu a").forEach(a=>a.classList.toggle("active",a.dataset.p===id));
+document.body.classList.remove("open");$("#burger").setAttribute("aria-expanded","false");
+window.scrollTo(0,0);
+try{history.replaceState(null,"","#"+id)}catch(e){}}
+
+const card=(e,i)=>`<button class="ev" data-i="${i}"><strong>${esc(e.baslik)}</strong><span class="cat">${esc(e.kategori)}</span><p>${esc(e.aciklama)}</p></button>`;
+
+function renderMonths(){
+$("#months").innerHTML='<h3>Aylar</h3>'+MONTHS.map(m=>`<button class="mb${m===cur?" on":""}" data-m="${esc(m)}">${esc(m)}<span>${inMonth(m).length||""}</span></button>`).join("")}
+function showMonth(m){
+cur=m;closePreview();renderMonths();$("#mTitle").textContent=m;
+const l=inMonth(m);
+$("#list").innerHTML=l.length?l.map(e=>card(e,events.indexOf(e))).join(""):'<div class="empty">Bu ay için henüz yükleme yapılmadı.</div>'}
+function openPreview(i){
+const e=events[i];if(!e)return;
+const id=fileId(e.dosya);
+$("#preview").innerHTML=`<div class="p-head"><div><small>${esc([e.ay,e.kategori].filter(Boolean).join(" - "))}</small><h3>${esc(e.baslik)}</h3></div><button class="back" style="margin:0" data-close>Önizlemeyi kapat</button></div>
+<p class="p-desc">${esc(e.aciklama)}</p>`+(id?`<div class="viewer"><iframe src="https://drive.google.com/file/d/${id}/preview" title="${esc(e.baslik)}"></iframe><div class="wm"></div><div class="shield"></div></div>`:'<p class="nofile">Bu etkinlik için dosya eklenmemiş.</p>');
+$("#preview").classList.add("show");$("#preview").scrollIntoView({behavior:"smooth",block:"start"})}
+function closePreview(){$("#preview").classList.remove("show");$("#preview").innerHTML=""}
+function openEvent(i){
+const e=events[i];if(!e)return;
+showPage("etkinlikler");
+showMonth(MONTHS.find(m=>norm(m)===norm(e.ay))||cur);openPreview(i)}
+
+document.addEventListener("click",ev=>{
+const t=ev.target;let x;
+if(x=t.closest("[data-p]"))showPage(x.dataset.p);
+else if(x=t.closest("[data-go]")){showPage(x.dataset.go)}
+else if(x=t.closest(".mb"))showMonth(x.dataset.m);
+else if(x=t.closest(".ev"))openEvent(+x.dataset.i);
+else if(t.closest("[data-close]"))closePreview()});
+$("#burger").onclick=()=>{const o=document.body.classList.toggle("open");$("#burger").setAttribute("aria-expanded",o)};
+$("#scrim").onclick=()=>document.body.classList.remove("open");
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closePreview();document.body.classList.remove("open")}});
+
+load().then(()=>{
+$("#latest").innerHTML=events.length?events.slice(0,3).map(e=>card(e,events.indexOf(e))).join(""):'<div class="empty">Henüz etkinlik eklenmedi.</div>';
+const last=[...MONTHS].reverse().find(m=>inMonth(m).length)||MONTHS[0];
+showMonth(last);
+showPage((location.hash||"#ana").slice(1))});
+</script>
 </body>
 </html>
