@@ -31,7 +31,7 @@ nav{background:var(--deep);position:sticky;top:0;z-index:20}
 .menu a{border-bottom:0;border-left:4px solid transparent;padding:14px 22px}
 .menu a.active{border-left-color:var(--gold)}
 body.open .menu{transform:none}
-body.open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30}
+body.open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:15}
 .brand img{width:54px;height:54px}}
 main{max-width:1100px;margin:0 auto;padding:26px 20px 60px}
 .page{display:none}.page.show{display:block}
@@ -39,11 +39,12 @@ h2{font-family:var(--serif);font-weight:800;font-size:1.9rem;margin-bottom:8px}
 .lead{max-width:62ch;margin-bottom:18px}
 .back{background:none;border:2px solid var(--denim);color:var(--deep);font:600 .95rem var(--sans);padding:7px 14px;border-radius:4px;cursor:pointer;margin-bottom:16px}
 .back:hover{background:var(--denim);color:#fff}
-.hero{background:var(--deep);color:#fff;padding:36px 26px;border-left:8px solid var(--gold);margin-bottom:26px;border-radius:4px}
-.hero h2{font-size:clamp(1.5rem,4vw,2.4rem);max-width:20ch}
-.hero p{max-width:55ch;margin-top:10px;opacity:.92}
 .btn{display:inline-block;margin-top:16px;background:var(--gold);color:#1d2a33;border:0;padding:11px 20px;font:600 1rem var(--sans);cursor:pointer;border-radius:4px}
 .btn:hover{background:#e6ab42}
+.ann{background:var(--deep);color:#fff;border-left:8px solid var(--gold);border-radius:4px;padding:36px 26px}
+.ann h2{font-size:clamp(1.5rem,4vw,2.4rem)}
+.ann p{max-width:55ch;margin-top:10px;opacity:.92}
+#ana h2.sub{margin:28px 0 12px}
 /* Etkinlikler: icerik solda, ay menusu sagda */
 .ev-layout{display:grid;grid-template-columns:1fr 210px;gap:22px;align-items:start}
 .months{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);padding:12px;border-radius:4px;position:sticky;top:64px}
@@ -74,6 +75,8 @@ h2{font-family:var(--serif);font-weight:800;font-size:1.9rem;margin-bottom:8px}
 footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:18px;font-size:.92rem}
 .contact li{margin-bottom:8px;list-style:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+body{display:flex;flex-direction:column}
+main{flex:1;width:100%}
 </style>
 </head>
 <body>
@@ -97,10 +100,13 @@ footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:18px;font-
 
 <main>
 <section class="page" id="ana">
-<div class="hero"><h2>Dilimizi birlikte yaşatıyoruz</h2>
-<p>Her ayın dil ve edebiyat etkinliklerini bu panodan görüntüleyebilirsiniz.</p>
-<button class="btn" data-go="etkinlikler">Etkinlikleri gör</button></div>
-<h2>Son eklenenler</h2><div id="latest"></div>
+<div class="ann">
+<h2>Duyurular</h2>
+<p>Okulumuzun dilimizin zenginlikleri ile ilgili proje duyurularına buradan ulaşabilirsiniz.</p>
+<button class="btn" data-go="duyurular">Duyurulara git</button>
+</div>
+<h2 class="sub">Son eklenenler</h2>
+<div id="latest"></div>
 </section>
 
 <section class="page" id="etkinlikler">
@@ -128,7 +134,7 @@ footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:18px;font-
 <ul class="contact">
 <!-- Bilgileri kendi okulunuzunkilerle değiştirin -->
 <li><b>Adres:</b> <a href="https://maps.google.com/?q=Satı Kadın Mesleki ve Teknik Anadolu Lisesi, Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara" target="_blank" rel="noopener">Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara</a></li>
-<li><b>Telefon:</b> <a href="tel:+(0312) 244 31 39">(0312) 244 31 39</a></li>
+<li><b>Telefon:</b> <a href="tel:+903122443139">(0312) 244 31 39</a></li>
 <li><b>E-posta:</b> <a href="mailto:mtalsatikadin@gmail.com">mtalsatikadin@gmail.com</a></li>
 <li><b>Instagram:</b> <a href="https://instagram.com/satikadinmtal" target="_blank" rel="noopener">@satikadinmtal</a></li>
 </ul>
@@ -139,7 +145,7 @@ footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:18px;font-
 <script>
 /* AYARLAR */
 // Google Sheets > Dosya > Paylaş > Web'de yayınla > CSV linkini buraya yapıştırın. Boşsa örnek veri görünür.
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQQZ2vwBz4UcyIo9A9oLGLsX4wXrbHC522rtD0hdBlj3-XgiNK3P2cQY7WFyYqdQbxe4tqq7eDW6fBK/pub?output=csv";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQQZ2vwBz4UcyIo9A9oLGLsX4wXrbHC522rtD0hdBlj3-XgiNK3P2cQY7WFyYqdQbxe4tqq7eDW6fBK/pub?gid=1283913948&single=true&output=csv";
 // AY LİSTESİ: Aralıkta 2027 aylarını buraya ekleyin. Google Form'daki "Ay" seçenekleriyle BİREBİR aynı yazılmalı.
 const MONTHS = ["Ekim 2026","Kasım 2026","Aralık 2026"];
 // Form sütunları: Zaman damgası, Ay, Başlık, Kısa Açıklama, Kategori, Dosya
@@ -165,7 +171,7 @@ if(c||r.length){r.push(c);rows.push(r)}return rows}
 async function load(){
 if(!SHEET_CSV_URL){events=DEMO;return}
 try{const res=await fetch(SHEET_CSV_URL);
-events=parseCSV(await res.text()).slice(1).filter(r=>r[2]).map(r=>({ay:r[1],baslik:r[2],aciklama:r[3],kategori:r[4],dosya:r[5]})).reverse()}
+events=parseCSV(await res.text()).slice(1).filter(r=>r[1]).map(r=>({ay:r[0],baslik:r[1],aciklama:r[2],kategori:r[3],dosya:r[4]})).reverse()}
 catch(e){events=[]}}
 
 /* Sayfa gecisi: adres cubuguna bagli degil, dogrudan JS */
