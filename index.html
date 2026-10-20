@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SATI KADIN MTAL - Dilimizin Zenginlikleri Dijital Pano</title>
+<title>SATI KADIN MTAL - DİLİMİZİN ZENGİNLİKLERİ DİJİTAL PANO</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#dbe5eb;--card:#f4f8fa;--denim:#3b6c8a;--deep:#27465a;--gold:#d99a2b;--line:#b9cad5;--ink:#1d3140;
@@ -74,7 +74,36 @@ h2{font-family:var(--serif);font-weight:800;font-size:1.9rem;margin-bottom:0.5re
 .viewer .shield{position:absolute;top:0;right:0;width:4rem;height:3.75rem}
 .nofile{padding:1.5rem 1rem}
 footer{background:var(--deep);color:#d3e0e8;text-align:center;padding:1.125rem;font-size:.92rem}
-.contact li{margin-bottom:0.5rem;list-style:none}
+.contact li{margin-bottom:0.75rem;list-style:none}
+.contact li{display:flex;align-items:center;gap:0.75rem}
+.contact a{color:var(--deep);font-weight:600;text-decoration:none}
+.contact a:hover{color:var(--denim);text-decoration:underline}
+.ci{flex:0 0 2.5rem;width:2.5rem;height:2.5rem;border-radius:50%;background:var(--denim);color:#fff;display:flex;align-items:center;justify-content:center}
+.ci svg{width:1.25rem;height:1.25rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+
+/* Galeri: her yukleme bir blok (baslik, aciklama, fotograf izgarasi) */
+.gal-blok{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--denim);border-radius:0.1875rem;padding:1rem 1.125rem 1.125rem;margin-bottom:1.125rem}
+.gal-blok h3{font-family:var(--serif);font-size:1.3rem;line-height:1.25}
+.gal-blok small{display:block;color:var(--denim);font-weight:600;margin-top:0.125rem}
+.gal-blok .gal-acik{max-width:70ch;margin:0.5rem 0 0.875rem;white-space:pre-line;font-size:.98rem}
+.gal-izgara{display:grid;grid-template-columns:repeat(auto-fill,minmax(11.5rem,1fr));gap:0.625rem;margin-top:0.75rem}
+.gal-foto{padding:0;border:0;background:var(--line);aspect-ratio:4/3;border-radius:0.1875rem;overflow:hidden;cursor:pointer;display:block}
+.gal-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.gal-foto:hover{outline:3px solid var(--gold);outline-offset:-3px}
+#galFiltre{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem}
+#galFiltre button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:0.3125rem 0.875rem;font:600 .92rem var(--sans);color:var(--ink);cursor:pointer}
+#galFiltre button[aria-pressed="true"]{background:var(--denim);border-color:var(--denim);color:#fff}
+#galBuyuk{margin:auto;border:0;padding:0;border-radius:0.25rem;overflow:hidden;max-width:min(62.5rem,94vw);width:100%;background:#000}
+#galBuyuk::backdrop{background:rgba(0,0,0,.78)}
+#galBuyuk img{width:100%;max-height:82vh;object-fit:contain;display:block}
+#galBuyuk .g-sayac{position:absolute;top:0.625rem;left:0.625rem;background:rgba(0,0,0,.6);color:#fff;padding:0.25rem 0.75rem;border-radius:999px;font-size:.88rem}
+#galBuyuk button{position:absolute;width:2.75rem;height:2.75rem;border:0;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:1.4rem;cursor:pointer}
+#galBuyuk .g-kapat{top:0.625rem;right:0.625rem}
+#galBuyuk .g-on{left:0.625rem;top:50%;transform:translateY(-50%)}
+#galBuyuk .g-ar{right:0.625rem;top:50%;transform:translateY(-50%)}
+#galBuyuk button:hover{background:var(--gold);color:#1d2a33}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 body{display:flex;flex-direction:column}
 main{flex:1;width:100%}
@@ -93,7 +122,6 @@ main{flex:1;width:100%}
 <li><a data-p="etkinlikler">Etkinlikler</a></li>
 <li><a data-p="duyurular">Duyurular</a></li>
 <li><a data-p="galeri">Galeri</a></li>
-<li><a data-p="kelime">Kelime Köşesi</a></li>
 <li><a data-p="hakkimizda">Hakkımızda</a></li>
 <li><a data-p="iletisim">İletişim</a></li>
 </ul></nav>
@@ -120,13 +148,25 @@ main{flex:1;width:100%}
 </section>
 
 <section class="page" id="duyurular"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Duyurular</h2><p class="lead">Yakında.</p></section>
-<section class="page" id="galeri"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Galeri</h2><p class="lead">Yakında.</p></section>
-<section class="page" id="kelime"><button class="back" data-go="ana">Ana Sayfaya Dön</button><h2>Kelime Köşesi</h2><p class="lead">Yakında.</p></section>
+<section class="page" id="galeri">
+<button class="back" data-go="ana">Ana Sayfaya Dön</button>
+<h2>Galeri</h2>
+<div id="galFiltre" role="group" aria-label="Kategori filtresi"></div>
+<div id="galListe"><div class="empty">Fotoğraflar yükleniyor…</div></div>
+</section>
+
 
 <section class="page" id="hakkimizda">
 <button class="back" data-go="ana">Ana Sayfaya Dön</button>
 <h2>Hakkımızda</h2>
-<!-- BURAYA KENDİ METNİNİZİ YAZIN -->
+Kelimelerin izinde, dilimizin kalbinde….                                         
+Dil, bir milletin hafızası, kültürü ve ruhudur. Her kelime geçmişten bugüne uzanan bir iz, her ifade bizi köklerimize bağlayan bir köprüdür.
+
+Dilimizin Zenginlikleri olarak Türkçemizin derinliklerinde saklı kelimeleri keşfetmeyi, söz varlığımızı tanımayı, klasik metinlerimizin dünyasına yolculuk yapmayı ve dilimizin inceliklerini gelecek nesillere aktarmayı amaçlıyoruz.
+
+Kelime hazinemizi zenginleştirmek, dil bilincimizi geliştirmek ve Türkçenin eşsiz güzelliklerini birlikte keşfetmek için buradayız.
+Dilimize sahip çıkıyor, kelimelerle geçmişten geleceğe köprü kuruyoruz.
+Çünkü dilimiz ortak hafızamızdır.
 </section>
 
 <section class="page" id="iletisim">
@@ -134,19 +174,28 @@ main{flex:1;width:100%}
 <h2>İletişim</h2>
 <ul class="contact">
 <!-- Bilgileri kendi okulunuzunkilerle değiştirin -->
-<li><b>Adres:</b> <a href="https://maps.google.com/?q=Satı Kadın Mesleki ve Teknik Anadolu Lisesi, Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara" target="_blank" rel="noopener">Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara</a></li>
-<li><b>Telefon:</b> <a href="tel:+903122443139">(0312) 244 31 39</a></li>
-<li><b>E-posta:</b> <a href="mailto:mtalsatikadin@gmail.com">mtalsatikadin@gmail.com</a></li>
-<li><b>Instagram:</b> <a href="https://instagram.com/satikadinmtal" target="_blank" rel="noopener">@satikadinmtal</a></li>
+<li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="sr">Adres: </span><a href="https://maps.google.com/?q=Satı Kadın Mesleki ve Teknik Anadolu Lisesi, Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara" target="_blank" rel="noopener">Ayyıldız, Taptuk Emre Bulvarı 10/1, 06796 Etimesgut/Ankara</a></li>
+<li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="sr">Telefon: </span><a href="tel:+903122443139">(0312) 244 31 39</a></li>
+<li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span class="sr">E-posta: </span><a href="mailto:mtalsatikadin@gmail.com">mtalsatikadin@gmail.com</a></li>
+<li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span><span class="sr">Instagram: </span><a href="https://instagram.com/satikadinmtal" target="_blank" rel="noopener">@satikadinmtal</a></li>
 </ul>
 </section>
 </main>
+<dialog id="galBuyuk" aria-label="Fotoğraf görüntüleyici">
+<img id="galResim" alt="">
+<span class="g-sayac" id="galSayac"></span>
+<button class="g-kapat" id="galKapat" aria-label="Kapat">×</button>
+<button class="g-on" id="galOn" aria-label="Önceki fotoğraf">‹</button>
+<button class="g-ar" id="galAr" aria-label="Sonraki fotoğraf">›</button>
+</dialog>
 <footer>SATI KADIN MTAL - Dilimizin Zenginlikleri Dijital Pano</footer>
 
 <script>
 /* AYARLAR */
 // Google Sheets > Dosya > Paylaş > Web'de yayınla > CSV linkini buraya yapıştırın. Boşsa örnek veri görünür.
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQQZ2vwBz4UcyIo9A9oLGLsX4wXrbHC522rtD0hdBlj3-XgiNK3P2cQY7WFyYqdQbxe4tqq7eDW6fBK/pub?gid=1283913948&single=true&output=csv";
+// GALERİ: Apps Script'ten aldığın Web uygulaması (/exec) linkini buraya yapıştırın.
+const GALERI_API = "https://docs.google.com/spreadsheets/d/1wKBByh0xAPKXc3emzF8i3VNgxO9xuQQfMMsKvkw1U2Q/edit?usp=sharing";
 // AY LİSTESİ: Aralıkta 2027 aylarını buraya ekleyin. Google Form'daki "Ay" seçenekleriyle BİREBİR aynı yazılmalı.
 const MONTHS = ["Ekim 2026","Kasım 2026","Aralık 2026"];
 // Form sütunları: Zaman damgası, Ay, Başlık, Kısa Açıklama, Kategori, Dosya
@@ -181,6 +230,7 @@ if(!document.getElementById(id))id="ana";
 document.querySelectorAll(".page").forEach(s=>s.classList.toggle("show",s.id===id));
 document.querySelectorAll(".menu a").forEach(a=>a.classList.toggle("active",a.dataset.p===id));
 document.body.classList.remove("open");$("#burger").setAttribute("aria-expanded","false");
+if(id==="galeri")loadGallery();
 window.scrollTo(0,0);
 try{history.replaceState(null,"","#"+id)}catch(e){}}
 
@@ -214,6 +264,40 @@ else if(t.closest("[data-close]"))closePreview()});
 $("#burger").onclick=()=>{const o=document.body.classList.toggle("open");$("#burger").setAttribute("aria-expanded",o)};
 $("#scrim").onclick=()=>document.body.classList.remove("open");
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closePreview();document.body.classList.remove("open")}});
+
+
+/* ===== GALERI ===== */
+let galeri=[],galYuklendi=false,galSecili="Tümü",galAktif={liste:[],i:0,baslik:""};
+function loadGallery(){
+if(galYuklendi)return;
+if(!GALERI_API||GALERI_API.indexOf("BURAYA")===0){$("#galListe").innerHTML='<div class="empty">Galeri bağlantısı henüz eklenmedi.</div>';return}
+galYuklendi=true;
+fetch(GALERI_API).then(r=>r.json()).then(v=>{galeri=v;galFiltre();galCiz()})
+.catch(()=>{galYuklendi=false;$("#galListe").innerHTML='<div class="empty">Galeri yüklenemedi. Sayfayı yenileyip tekrar deneyin.</div>'})}
+function galFiltre(){
+const k=["Tümü",...new Set(galeri.map(o=>o.kategori).filter(Boolean))];
+$("#galFiltre").innerHTML=k.length<3?"":k.map(x=>`<button type="button" data-gk="${esc(x)}" aria-pressed="${x===galSecili}">${esc(x)}</button>`).join("")}
+function galCiz(){
+const l=galeri.map((o,i)=>({o,i})).filter(x=>galSecili==="Tümü"||x.o.kategori===galSecili);
+$("#galListe").innerHTML=l.length?l.map(({o,i})=>{
+const alt=[o.yukleyen,o.tarih?new Date(o.tarih).toLocaleDateString("tr-TR"):""].filter(Boolean).join(" - ");
+return `<section class="gal-blok"><h3>${esc(o.baslik)}</h3>${alt?`<small>${esc(alt)}</small>`:""}${o.aciklama?`<p class="gal-acik">${esc(o.aciklama)}</p>`:""}
+<div class="gal-izgara">${o.fotolar.map((f,j)=>`<button type="button" class="gal-foto" data-gi="${i}" data-gj="${j}" aria-label="${esc(o.baslik)} - fotoğraf ${j+1}"><img src="${esc(f.kucuk)}" alt="${esc(o.baslik)} - fotoğraf ${j+1}" loading="lazy"></button>`).join("")}</div></section>`}).join("")
+:'<div class="empty">Henüz yayınlanmış fotoğraf yok.</div>'}
+function galGoster(){
+const f=galAktif.liste[galAktif.i],n=galAktif.liste.length;
+$("#galResim").src=f.buyuk;$("#galResim").alt=galAktif.baslik;
+$("#galSayac").textContent=(galAktif.i+1)+" / "+n;
+$("#galOn").hidden=$("#galAr").hidden=n<2}
+function galGit(y){const n=galAktif.liste.length;galAktif.i=(galAktif.i+y+n)%n;galGoster()}
+document.addEventListener("click",ev=>{
+const t=ev.target;let x;
+if(x=t.closest("[data-gk]")){galSecili=x.dataset.gk;galFiltre();galCiz()}
+else if(x=t.closest(".gal-foto")){const o=galeri[+x.dataset.gi];galAktif={liste:o.fotolar,i:+x.dataset.gj,baslik:o.baslik};galGoster();$("#galBuyuk").showModal()}
+else if(t.closest("#galKapat")||t===$("#galBuyuk"))$("#galBuyuk").close();
+else if(t.closest("#galOn"))galGit(-1);
+else if(t.closest("#galAr"))galGit(1)});
+$("#galBuyuk").addEventListener("keydown",e=>{if(e.key==="ArrowLeft")galGit(-1);if(e.key==="ArrowRight")galGit(1)});
 
 /* Filigran: ust menu ile alt bilgi arasinda tam ortada kalsin */
 function placeWM(){const n=$("nav").getBoundingClientRect(),f=$("footer").getBoundingClientRect(),st=document.body.style;
