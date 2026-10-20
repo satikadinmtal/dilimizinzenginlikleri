@@ -270,48 +270,53 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"){closePreview();docu
 /* ===== GALERI ===== */
 let galeri=[],galYuklendi=false,galSecili="Tümü",galAktif={liste:[],i:0,baslik:""};
 async function loadGallery(){
-if(galYuklendi)return;
-if(!GALERI_API||GALERI_API.indexOf("BURAYA")===0){$("#galListe").innerHTML='<div class="empty">Galeri bağlantısı henüz eklenmedi.</div>';return}
-const liste=$("#galListe");
-liste.innerHTML='<div class="empty">Fotoğraflar yükleniyor…</div>';
-try{
-  let response, data, directError;
-  // Önce Apps Script adresinden doğrudan yüklemeyi dene.
-  try{
-    response=await fetch(GALERI_API,{method:"GET",redirect:"follow",cache:"no-store"});
-    if(!response.ok)throw new Error("HTTP "+response.status);
-    data=await response.json();
-  }catch(err){
-    directError=err;
-    // Bazı statik site barındırıcılarında Apps Script CORS engeline takılabilir.
-    // Bu durumda CORS başlıkları sunan ara uç üzerinden tekrar dene.
-    const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(GALERI_API);
-    response=await fetch(proxy,{method:"GET",cache:"no-store"});
-    if(!response.ok)throw new Error("Doğrudan bağlantı ve yedek bağlantı başarısız oldu.");
-    data=await response.json();
+  if(galYuklendi) return;
+  if(!GALERI_API || GALERI_API.indexOf("BURAYA")===0){
+    $("#galListe").innerHTML='<div class="empty">Galeri bağlantısı henüz eklenmedi.</div>';
+    return;
   }
-  if(!Array.isArray(data))throw new Error("Galeri API beklenen JSON liste biçiminde veri döndürmedi.");
-  galeri=data.filter(o=>o&&typeof o==="object").map(o=>({
-    baslik:o.baslik||"Başlıksız etkinlik",
-    aciklama:o.aciklama||"",
-    yukleyen:o.yukleyen||"",
-    tarih:o.tarih||"",
-    kategori:o.kategori||"",
-    fotolar:Array.isArray(o.fotolar)?o.fotolar.filter(f=>f&& (f.kucuk||f.buyuk)).map(f=>({
-      kucuk:f.kucuk||f.buyuk,
-      buyuk:f.buyuk||f.kucuk
-    })):[]
-  }));
-  galYuklendi=true;
-  galFiltre();
-  galCiz();
-}catch(err){
+
+  const liste=$("#galListe");
+  liste.innerHTML='<div class="empty">Fotoğraflar yükleniyor…</div>';
+  const attempts = [
+    {name:"Doğrudan bağlantı", url:GALERI_API, parse:"json"},
+    {name:"AllOrigins", url:"https://api.allorigins.win/raw?url="+encodeURIComponent(GALERI_API), parse:"json"},
+    {name:"CORS Proxy", url:"https://corsproxy.io/?url="+encodeURIComponent(GALERI_API), parse:"json"},
+    {name:"CodeTabs", url:"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(GALERI_API), parse:"json"}
+  ];
+  const errors=[];
+  for(const attempt of attempts){
+    try{
+      const response=await fetch(attempt.url,{method:"GET",cache:"no-store"});
+      if(!response.ok) throw new Error("HTTP "+response.status);
+      const data=await response.json();
+      if(!Array.isArray(data)) throw new Error("Yanıt JSON liste biçiminde değil");
+      galeri=data.filter(o=>o&&typeof o==="object").map(o=>({
+        baslik:o.baslik||"Başlıksız etkinlik",
+        aciklama:o.aciklama||"",
+        yukleyen:o.yukleyen||"",
+        tarih:o.tarih||"",
+        kategori:o.kategori||"",
+        fotolar:Array.isArray(o.fotolar)?o.fotolar.filter(f=>f&&(f.kucuk||f.buyuk)).map(f=>({
+          kucuk:f.kucuk||f.buyuk,
+          buyuk:f.buyuk||f.kucuk
+        })):[]
+      }));
+      galYuklendi=true;
+      galFiltre();
+      galCiz();
+      return;
+    }catch(err){
+      errors.push(attempt.name+": "+(err&&err.message?err.message:String(err)));
+      console.warn("Galeri bağlantısı başarısız ("+attempt.name+"):",err);
+    }
+  }
   galYuklendi=false;
-  console.error("Galeri yükleme hatası:",err);
-  liste.innerHTML='<div class="empty">Galeri yüklenemedi. Bağlantı engellenmiş veya geçici olarak kullanılamıyor olabilir. <button type="button" class="btn" id="galTekrarDene">Tekrar dene</button></div>';
+  console.error("Galeri yüklenemedi. Denenen bağlantılar:",errors);
+  liste.innerHTML='<div class="empty"><strong>Galeriye şu anda ulaşılamıyor.</strong><p>Bu durum sitenin bağlantı izni veya ara servislerden kaynaklanabilir.</p><button type="button" class="btn" id="galTekrarDene">Tekrar dene</button></div>';
   const retry=$("#galTekrarDene");
-  if(retry)retry.addEventListener("click",()=>loadGallery());
-}}
+  if(retry) retry.addEventListener("click",()=>{retry.disabled=true;retry.textContent="Deneniyor…";loadGallery();});
+}
 function galFiltre(){
 const k=["Tümü",...new Set(galeri.map(o=>o.kategori).filter(Boolean))];
 $("#galFiltre").innerHTML=k.length<3?"":k.map(x=>`<button type="button" data-gk="${esc(x)}" aria-pressed="${x===galSecili}">${esc(x)}</button>`).join("")}
